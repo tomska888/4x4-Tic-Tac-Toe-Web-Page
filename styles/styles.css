@@ -87,3 +87,8 @@ h1 {
     width: 100%;
     height: 100%;
 }
+
+.cell.taken {
+    pointer-events: none;
+    background-color: lightgray;
+}
