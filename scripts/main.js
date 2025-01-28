@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function startGame() {
         currentPlayer = player1SymbolInput.value || "X";
         isGameActive = true;
+        board = Array(4).fill(null).map(() => Array(4).fill(null));
         createBoard();
     }
 
@@ -63,7 +64,39 @@ document.addEventListener("DOMContentLoaded", () => {
             cell.textContent = currentPlayer;
             cell.classList.add("taken");
 
-            currentPlayer = currentPlayer === player1SymbolInput.value ? player2SymbolInput.value : player1SymbolInput.value;
+            setTimeout(() => {
+                if (checkWin()) {
+                    alert(`${currentPlayer} wins!`);
+                    isGameActive = false;
+                    return;
+                }
+
+                if (checkDraw()) {
+                    alert("It's a draw!");
+                    isGameActive = false;
+                    return;
+                }
+
+                currentPlayer = currentPlayer === player1SymbolInput.value
+                    ? player2SymbolInput.value
+                    : player1SymbolInput.value;
+            }, 0);
         }
+    }
+
+    function checkWin() {
+        for (let i = 0; i < 4; i++) {
+            if (board[i][0] && board[i].every(cell => cell === board[i][0])) return true; // Row check
+            if (board[0][i] && board.every(row => row[i] === board[0][i])) return true; // Column check
+        }
+
+        if (board[0][0] && board.every((row, index) => row[index] === board[0][0])) return true;
+        if (board[0][3] && board.every((row, index) => row[3 - index] === board[0][3])) return true;
+
+        return false;
+    }
+
+    function checkDraw() {
+        return board.flat().every(cell => cell !== null);
     }
 });
