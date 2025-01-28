@@ -92,3 +92,20 @@ h1 {
     pointer-events: none;
     background-color: lightgray;
 }
+
+.winning-cell {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    animation: flash 1s infinite alternate;
+}
+
+@keyframes flash {
+    0% {
+        background-color: #4caf50;
+    }
+
+    100% {
+        background-color: #66bb6a;
+    }
+}
