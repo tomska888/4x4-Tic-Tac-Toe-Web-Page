@@ -93,19 +93,29 @@ h1 {
     background-color: lightgray;
 }
 
-.winning-cell {
-    background-color: #4caf50;
+#restart-game-button {
+    display: none;
+    /* Hidden by default */
+    background-color: #007bff;
     color: white;
-    font-weight: bold;
-    animation: flash 1s infinite alternate;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    border-radius: 5px;
+    transition: background 0.3s ease;
 }
 
-@keyframes flash {
-    0% {
-        background-color: #4caf50;
-    }
+#restart-game-button:hover {
+    background-color: #0056b3;
+}
 
-    100% {
-        background-color: #66bb6a;
-    }
+/* Center the restart button under the board */
+.restart-container {
+    display: flex;
+    justify-content: center;
 }
