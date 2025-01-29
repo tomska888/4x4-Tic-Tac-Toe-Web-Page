@@ -93,6 +93,10 @@ h1 {
     background-color: lightgray;
 }
 
+.winning-cell {
+    background-color: #ffeb3b !important;
+}
+
 #restart-game-button {
     display: none;
     /* Hidden by default */
